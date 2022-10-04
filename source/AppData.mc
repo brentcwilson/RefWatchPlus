@@ -259,11 +259,10 @@ class AppData {
 	static function setGPSOff(val) {
 		gpsOff = val;
 
-		var callback = new Lang.Method(RefWatchApp, :onPosition);
 		if (val) {
-			Position.enableLocationEvents(Position.LOCATION_DISABLE, callback);
+			Position.enableLocationEvents(Position.LOCATION_DISABLE, null);
 		} else {
-			Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, callback);
+			Position.enableLocationEvents(Position.LOCATION_CONTINUOUS, null);
 		}
 
 		Store.setValue(Ui.loadResource(Rez.Strings.GPSOff_StorageID), val);
